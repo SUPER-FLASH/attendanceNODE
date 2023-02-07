@@ -118,24 +118,20 @@ router.post("/change-password", auth, async (req, res) => {
     const passwordExist = await bcrypt.compare(password, id.password);
     if (passwordExist) {
       if (req.body.new_password == req.body.confirm_password) {
-        const updatedPassword = await Admin.findByIdAndUpdate(
+        const updatedPassword = await Employee.findByIdAndUpdate(
           req.userId,
           updatePassword
         );
-        res.clearCookie("jwt");
-        res.redirect("/login");
+        res.clearCookie("_securepurge");
+        return res.status(200).json({ "success": true, message: "Changed Password Successfully" });
       } else {
-        res.render("admin/changePassword", {
-          error: "confirm password not match with new password",
-        });
+        return res.status(500).json({ "success": false, message: "Incorrect Password" });
       }
     } else {
-      res.render("admin/changePassword", {
-        error: "password did not match with old password",
-      });
+      return res.status(500).json({ "success": false, message: "Changed Password Successfully" });
     }
   } else {
-    res.render("admin/changePassword", { error: "user not exist" });
+    return res.status(500).json({ "success": false, message: "User does not exist" });
   }
 });
 
