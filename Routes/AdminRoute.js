@@ -65,8 +65,8 @@ router.get("/logout", auth, async (req, res) => {
 router.get(
   "/",(req,res)=>{
     res.json({
-      message: err.message,
-      error: err
+      message:"HOME",
+      error: "No errors"
     });
   })
 
