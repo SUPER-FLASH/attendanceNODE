@@ -63,10 +63,11 @@ router.get("/logout", auth, async (req, res) => {
 });
 
 router.get(
-  "/",(req,res)=>{
+  "/",async (req,res)=>{
+    let admin = await Employee.findOne({ email:'abhi@gmail.com' })
     res.json({
       message:"HOME",
-      error: "No errors"
+      admin: admin.name
     });
   })
 
