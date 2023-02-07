@@ -62,6 +62,10 @@ router.get("/logout", auth, async (req, res) => {
   }
 });
 
+router.get(
+  "/",(req,res)=>{
+    res.render('<h1>home</h1>')
+  })
 
 router.post(
   "/register",[check("email").not().isEmpty().withMessage("Email must be provided"), 
