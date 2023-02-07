@@ -128,7 +128,7 @@ router.post("/change-password", auth, async (req, res) => {
         return res.status(500).json({ "success": false, message: "Incorrect Password" });
       }
     } else {
-      return res.status(500).json({ "success": false, message: "Changed Password Successfully" });
+      return res.status(500).json({ "success": false, message: "Old Password Incorrect" });
     }
   } else {
     return res.status(500).json({ "success": false, message: "User does not exist" });
