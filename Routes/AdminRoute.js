@@ -64,7 +64,10 @@ router.get("/logout", auth, async (req, res) => {
 
 router.get(
   "/",(req,res)=>{
-    res.render('<h1>home</h1>')
+    res.json({
+      message: err.message,
+      error: err
+    });
   })
 
 router.post(
