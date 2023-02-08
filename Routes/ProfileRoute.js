@@ -18,7 +18,7 @@ router.get('/profile-data',auth,async (req,res)=>{
     const EmployeeData = await Employee.findById(req.userId);
     
     console.log(EmployeeData);
-    delete thisIsObject["Cow"];
+    delete EmployeeData["password"];
     res.send({profile:EmployeeData});
 
 })
